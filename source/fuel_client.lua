@@ -208,11 +208,11 @@ end)
 
 RegisterNetEvent('lj-fuel:client:SetFuelSV', function(level)
 	local ped = PlayerPedId()
-	if (IsPedInAnyVehicle(ped) then
-		local vehicle = GetVehiclePedIsIn(ped)
-		if GetPedInVehicleSeat(vehicle, -1) == ped then
-			SetFuel(vehicle, level)
-		end
+	if not IsPedInAnyVehicle(ped) then return end
+	
+	local vehicle = GetVehiclePedIsIn(ped)
+	if GetPedInVehicleSeat(vehicle, -1) == ped then
+		SetFuel(vehicle, level)
 	end
 end)
 
