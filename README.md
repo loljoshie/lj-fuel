@@ -6,6 +6,8 @@ Join my Discord laboratory for updates, support, and special early testing!
 https://discord.gg/HH6uTcBfew
 
 lj-fuel is a modified version of LegacyFuel using PolyZones like NoPixel 3.0
+<br>
+Runs at ~ 0.00 to 0.01 ms if you have more optimization suggestions feel free to reach out
 
 # Dependencies
 * [qb-target](https://github.com/BerkieBb/qb-target)
@@ -132,6 +134,8 @@ end)
 
 #
 # Previews
+### resource ms
+![resource ms](https://user-images.githubusercontent.com/91661118/139408600-4ce062a2-c302-46a9-a1f1-210a1cee402a.png)
 ### refueling animation
 https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-bf1b-47210cb6a971.mp4
 ### refueling vehicle jerry can
