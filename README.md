@@ -11,15 +11,24 @@ Runs at ~ 0.00 to 0.01 ms if you have more optimization suggestions feel free to
 
 # Dependencies
 * [qb-target](https://github.com/BerkieBb/qb-target)
+* [qb-menu](https://github.com/qbcore-framework/qb-menu)
 * [polyzone](https://github.com/qbcore-framework/PolyZone)
 * [polyzonehelper](https://github.com/bashenga/polyzonehelper)
-* [nh-context](https://github.com/Aveeux/-nh-context)
 
-# Installation [tutorial video](https://www.youtube.com/watch?v=O4XmUw958E4)
+# Installation [tutorial video]()
 
 * **IMPORTANT: Must rename ANY existing LegacyFuel exports to lj-fuel**
-* Watch [tutorial video](https://www.youtube.com/watch?v=O4XmUw958E4) [if visual guide needed]
+* Watch [tutorial video]() [if visual guide needed]
 
+## qb-menu 
+* find this in **"qb-menu/client/main.lua"**
+* Put this **under line 27:**
+```lua
+RegisterNetEvent('qb-menu:openMenu')
+AddEventHandler('qb-menu:openMenu', function(data)
+    openMenu(data)
+end)
+```
 
 ## qb-target config (v3.1.2 newest isn't exporting correctly):
 * Find this in **qb-target/config**
@@ -153,7 +162,7 @@ https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-
 # My CSS Edits to Dependencies
 * [qb-target](https://github.com/loljoshie/qb-target)
 * [progressbar](https://github.com/loljoshie/progressbar)
-* [nh-context](https://github.com/loljoshie/-nh-context)
+* [qb-menu](https://github.com/loljoshie/qb-menu)
 
 # Credit
 * ImpulseFPS for PolyZone and global tax idea [original version](https://github.com/ImpulseFPS/irp-fuel)
