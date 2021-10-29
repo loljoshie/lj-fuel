@@ -98,7 +98,7 @@ RegisterNetEvent('lj-fuel:client:refuelCan', function()
 	local vehicle = QBCore.Functions.GetClosestVehicle()
 	local ped = PlayerPedId()
 	local CurFuel = GetVehicleFuelLevel(vehicle)
-	print(refillCost)
+
 	if HasPedGotWeapon(ped, 883325847) then
 	if GetAmmoInPedWeapon(ped, 883325847) < 4500 then
 		RequestAnimDict("weapon@w_sp_jerrycan")
