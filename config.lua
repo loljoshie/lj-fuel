@@ -220,4 +220,10 @@ Config.GasStations = { -- gas station polyzones
         polyzone1 = 15, 
         polyzone2 = 26,
     },
+    ["27"] = { 
+        polyzone = vector3(-319.41, -1471.71, 30.55),
+        polyzoneHeading = 31,
+        polyzone1 = 20.05, 
+        polyzone2 = 33.65,
+    },
 }
