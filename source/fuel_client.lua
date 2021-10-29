@@ -206,6 +206,16 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 	end
 end)
 
+RegisterNetEvent('lj-fuel:client:SetFuelSV', function(level)
+	local ped = PlayerPedId()
+	if (IsPedInAnyVehicle(ped) then
+		local vehicle = GetVehiclePedIsIn(ped)
+		if GetPedInVehicleSeat(vehicle, -1) == ped then
+			SetFuel(vehicle, level)
+		end
+	end
+end)
+
 RegisterNetEvent('polyzonehelper:enter')
 AddEventHandler('polyzonehelper:enter', function(name)
 	if name == "GasStations" then
