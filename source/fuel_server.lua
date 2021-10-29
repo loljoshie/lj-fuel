@@ -44,3 +44,7 @@ RegisterServerEvent('lj-fuel:server:PayForFuel', function(amount)
 
 	player.Functions.RemoveMoney('cash', amount)
 end)
+
+QBCore.Commands.Add("refuel", "Sets your current vehicles fuel level to max (Admin Only)", {}, false, function(source)
+	TriggerClientEvent("lj-fuel:client:SetFuelSV", source, 100)
+end, "admin")
