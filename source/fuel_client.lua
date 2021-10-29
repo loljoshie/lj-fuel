@@ -49,9 +49,8 @@ exports['qb-target']:AddTargetModel(prop, {
 -- buy jerry can menu
 RegisterNetEvent('lj-fuel:client:buyCanMenu')
 AddEventHandler('lj-fuel:client:buyCanMenu', function()
-    TriggerEvent('nh-context:sendMenu', {
+    exports['qb-menu']:openMenu({
         {
-            id = 0,
             header = "Gas Station",
             txt = 'The total cost is going to be: $'..Config.canCost..' including taxes.',
             params = {
@@ -80,9 +79,8 @@ end)
 -- refuel jerry can menu
 RegisterNetEvent('lj-fuel:client:refuelCanMenu')
 AddEventHandler('lj-fuel:client:refuelCanMenu', function()
-	TriggerEvent('nh-context:sendMenu', {
+	exports['qb-menu']:openMenu({
 		{
-			id = 0,
 			header = "Gas Station",
 			txt = "Buy jerry can. Remember there will be a 10% tax fee.",
 			params = {
@@ -305,10 +303,3 @@ Citizen.CreateThread(function()
 		EndTextCommandSetBlipName(blip)
 	end
 end)
-
-
-
-
-
-
-
