@@ -7,9 +7,8 @@ RegisterServerEvent('lj-fuel:server:OpenMenu', function(amount, inGasStation)
 	local tax = QBCore.Functions.GlobalTax(amount)
 	local total = math.ceil(amount + tax)
 	if inGasStation == true then
-		TriggerClientEvent('nh-context:sendMenu', src, {
+		TriggerClientEvent('qb-menu:openMenu', src, {
 			{
-				id = 1,
 				header = 'Gas Station',
 				txt = 'The total cost is going to be: $'..total..' including taxes.' ,
 				params = {
@@ -23,17 +22,16 @@ end
 
 -- refuel vehicle with jerry can menu outside zone
 if inGasStation == false then
-TriggerClientEvent('nh-context:sendMenu', src, {
-	{
-		id = 1,
-		header = 'Gas Station',
-		txt = 'The total cost is going to be: $'..total..' including taxes.' ,
-		params = {
-			event = "lj-fuel:client:RefuelVehicle",
-			args = total,
-		}
-	},
-})
+	TriggerClientEvent('qb-menu:openMenu', src, {
+		{
+			header = 'Gas Station',
+			txt = 'The total cost is going to be: $'..total..' including taxes.' ,
+			params = {
+				event = "lj-fuel:client:RefuelVehicle",
+				args = total,
+			}
+		},
+	})
 end
 end)
 
