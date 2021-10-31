@@ -14,6 +14,12 @@ Config.Blacklist = {
 	--276773164
 }
 
+--If true, vehicle will have a chance to blow up if engine is on while putting fuel. Set precentage blow up chance below.
+Config.VehicleBlowUp = true
+
+-- Percentage blow up chance, set it below as a whole number.
+Config.BlowUpChance = 100
+
 
 -- Class multipliers. If you want SUVs to use less fuel, you can change it to anything under 1.0, and vise versa.
 Config.Classes = {
