@@ -194,6 +194,7 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 					return
 				end
 			end
+				
 						
 			QBCore.Functions.Progressbar("refuel-car", "Refueling", time, false, true, {
 				disableMovement = true,
