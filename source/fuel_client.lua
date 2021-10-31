@@ -185,7 +185,16 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 			RequestAnimDict("weapon@w_sp_jerrycan")
 			while not HasAnimDictLoaded('weapon@w_sp_jerrycan') do Citizen.Wait(100) end
 			TaskPlayAnim(ped, "weapon@w_sp_jerrycan", "fire", 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
-		
+						
+			-- Exploison chance 
+			if GetIsVehicleEngineRunning(Vehicle) and Config.VehicleBlowUp then
+				local Chance = math.random(1, 100)
+			if Chance <= Config.BlowUpChance then
+				AddExplosion(vehicleCoords, 5, 50.0, true, false, true)
+					return
+				end
+			end
+						
 			QBCore.Functions.Progressbar("refuel-car", "Refueling", time, false, true, {
 				disableMovement = true,
 				disableCarMovement = true,
