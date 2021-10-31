@@ -3,7 +3,7 @@
 # lj-fuel used with QBCore Framework
 Join my Discord laboratory for updates, support, and special early testing!
 <br>
-https://discord.gg/HH6uTcBfew
+https://discord.gg/loljoshie
 
 lj-fuel is a modified version of LegacyFuel using PolyZones like NoPixel 3.0
 <br>
