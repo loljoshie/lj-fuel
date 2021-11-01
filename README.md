@@ -140,6 +140,8 @@ end)
 * Progressbar is synced with refueling amount left for vehicle
 * Buy jerry can from pump
 * Refuel jerry can from pump
+* Engine chance to blow up
+* Engine always running unless turned off
 
 #
 # Previews
@@ -163,6 +165,16 @@ https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-
 * [qb-target](https://github.com/loljoshie/qb-target)
 * [progressbar](https://github.com/loljoshie/progressbar)
 * [qb-menu](https://github.com/loljoshie/qb-menu)
+
+# Change Logs
+
+### 1.1
+* Added option to have a chance of engine explosion while vehicle is left running
+* Added option to have blips only show when close enough
+* Added option to leave engine running
+
+### 1.0
+* Initial release
 
 # Credit
 * ImpulseFPS for PolyZone and global tax idea [original version](https://github.com/ImpulseFPS/irp-fuel)
