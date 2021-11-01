@@ -145,6 +145,7 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 	local ped = PlayerPedId()
 	local CurFuel = GetVehicleFuelLevel(vehicle)
 	local time = (100 - CurFuel) * 400
+	local vehicleCoords = GetEntityCoords(vehicle)
 
 	------------------------------------------------------
 	if inGasStation == false and not HasPedGotWeapon(ped, 883325847) then
@@ -158,6 +159,15 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 			Citizen.Wait(100) 
 		end
 			TaskPlayAnim(ped, "weapon@w_sp_jerrycan", "fire", 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
+
+			-- explosion chance when engine is left running outside gas station zone
+			if GetIsVehicleEngineRunning(vehicle) and Config.VehicleBlowUp then
+				local Chance = math.random(1, 100)
+			if Chance <= Config.BlowUpChance then
+				AddExplosion(vehicleCoords, 5, 50.0, true, false, true)
+					return
+				end
+			end
 	
 			QBCore.Functions.Progressbar("refuel-car", "Refueling", time, false, true, {
 				disableMovement = true,
@@ -185,7 +195,17 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 			RequestAnimDict("weapon@w_sp_jerrycan")
 			while not HasAnimDictLoaded('weapon@w_sp_jerrycan') do Citizen.Wait(100) end
 			TaskPlayAnim(ped, "weapon@w_sp_jerrycan", "fire", 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
-		
+						
+			-- explosion chance when engine is left running inside gas station zone
+			if GetIsVehicleEngineRunning(vehicle) and Config.VehicleBlowUp then
+				local Chance = math.random(1, 100)
+			if Chance <= Config.BlowUpChance then
+				AddExplosion(vehicleCoords, 5, 50.0, true, false, true)
+					return
+				end
+			end
+				
+						
 			QBCore.Functions.Progressbar("refuel-car", "Refueling", time, false, true, {
 				disableMovement = true,
 				disableCarMovement = true,
@@ -205,6 +225,27 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 		end
 	end
 end)
+
+-- leave engine running
+if Config.LeaveEngineRunning then
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(100)
+		local ped = GetPlayerPed(-1)
+		
+		if DoesEntityExist(ped) and IsPedInAnyVehicle(ped, false) and IsControlPressed(2, 75) and not IsEntityDead(ped) and not IsPauseMenuActive() then
+			local engineWasRunning = GetIsVehicleEngineRunning(GetVehiclePedIsIn(ped, true))
+			Citizen.Wait(1000)
+			if DoesEntityExist(ped) and not IsPedInAnyVehicle(ped, false) and not IsEntityDead(ped) and not IsPauseMenuActive() then
+				local veh = GetVehiclePedIsIn(ped, true)
+				if engineWasRunning then
+					SetVehicleEngineOn(veh, true, true, true)
+				end
+			end
+		end
+	end
+end)
+end
 
 RegisterNetEvent('polyzonehelper:enter')
 AddEventHandler('polyzonehelper:enter', function(name)
@@ -242,9 +283,12 @@ function ManageFuelUsage(vehicle)
 
 	if IsVehicleEngineOn(vehicle) then
 		SetFuel(vehicle, GetVehicleFuelLevel(vehicle) - Config.FuelUsage[Round(GetVehicleCurrentRpm(vehicle), 1)] * (Config.Classes[GetVehicleClass(vehicle)] or 1.0) / 10)
-	end
-end
+		SetVehicleEngineOn(veh, true, true, true)
+else
+	SetVehicleEngineOn(veh, true, true, true)
 
+end
+end
 Citizen.CreateThread(function()
 	DecorRegister(Config.FuelDecor, 1)
 
@@ -289,17 +333,40 @@ Citizen.CreateThread(function()
 	end
 end)
 
--- gas station blips around map
-Citizen.CreateThread(function()
-	for k, v in pairs(Config.GasStations) do
-		local blip = AddBlipForCoord(Config.GasStations[k].polyzone.x, Config.GasStations[k].polyzone.y, Config.GasStations[k].polyzone.z)
-		SetBlipSprite(blip, 415)
-		SetBlipDisplay(blip, 4)
-		SetBlipScale  (blip, 0.7)
-		SetBlipColour (blip, 1)
-		SetBlipAsShortRange(blip, true)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString('Gas Station')
-		EndTextCommandSetBlipName(blip)
+-- show nearest gas stations when close enough
+if Config.ShowNearestGasStationOnly then
+    Citizen.CreateThread(function()
+        local currentGasBlip = 0
+
+        while true do
+            local coords = GetEntityCoords(PlayerPedId())
+            local closest = 1000
+            local closestCoords
+
+            for _, gasStationCoords in pairs(Config.GasStationsBlips) do
+                local dstcheck = #(coords - gasStationCoords)
+                if dstcheck < closest then
+                    closest = dstcheck
+                    closestCoords = gasStationCoords
+                end
+            end
+
+            if DoesBlipExist(currentGasBlip) then
+                RemoveBlip(currentGasBlip)
+            end
+
+            currentGasBlip = CreateBlip(closestCoords)
+            Citizen.Wait(10000)
 	end
 end)
+
+-- show all gas stations around map
+elseif Config.ShowAllGasStations then
+    Citizen.CreateThread(function()
+
+        for _, gasStationCoords in pairs(Config.GasStationsBlips) do
+            CreateBlip(gasStationCoords)
+
+        end
+    end)
+end
