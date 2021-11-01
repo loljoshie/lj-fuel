@@ -2,14 +2,13 @@ local fuelSynced = false
 local inBlacklisted = false
 local inGasStation = false
 
--- exports not working in qb-target v3.1.2
---[[ local prop = { "prop_gas_pump_1d", "prop_gas_pump_1a", "prop_gas_pump_1b", "prop_gas_pump_1c", "prop_vintage_pump", "prop_gas_pump_old2", "prop_gas_pump_old3",
+local prop = { "prop_gas_pump_1d", "prop_gas_pump_1a", "prop_gas_pump_1b", "prop_gas_pump_1c", "prop_vintage_pump", "prop_gas_pump_old2", "prop_gas_pump_old3",
 }
 
 local bones = { "boot",
 }
 
-exports['qb-target']:AddTargetBone(bones, {
+exports['berkie-target']:AddTargetBone(bones, {
 	options = {
 		{
 			type = "client",
@@ -27,7 +26,7 @@ exports['qb-target']:AddTargetBone(bones, {
 		distance = 1.5
 })
 
-exports['qb-target']:AddTargetModel(prop, {
+exports['berkie-target']:AddTargetModel(prop, {
 	options = {
 		{
 			type = "client",
@@ -43,8 +42,7 @@ exports['qb-target']:AddTargetModel(prop, {
 		},
 	},
 		distance = 2.0
-}) ]]
-
+})
 
 -- buy jerry can menu
 RegisterNetEvent('lj-fuel:client:buyCanMenu')
