@@ -10,7 +10,7 @@ lj-fuel is a modified version of LegacyFuel using PolyZones like NoPixel 3.0
 Runs at ~ 0.00 to 0.01 ms if you have more optimization suggestions feel free to reach out
 
 # Dependencies
-* [qb-target](https://github.com/BerkieBb/qb-target)
+* [berkie-target](https://github.com/BerkieBb/berkie-target)
 * [qb-menu](https://github.com/qbcore-framework/qb-menu)
 * [polyzone](https://github.com/qbcore-framework/PolyZone)
 * [polyzonehelper](https://github.com/bashenga/polyzonehelper)
@@ -28,66 +28,6 @@ RegisterNetEvent('qb-menu:openMenu')
 AddEventHandler('qb-menu:openMenu', function(data)
     openMenu(data)
 end)
-```
-
-## qb-target config (v3.1.2 newest isn't exporting correctly):
-* Find this in **qb-target/config**
-* Put this in **"Config.TargetBones"**
-```lua
-Config.TargetBones = {
-
-	["main"] = {
-        bones = {
-            "door_dside_f",
-            "door_dside_r",
-            "door_pside_f",
-            "door_pside_r"
-        },
-        options = {
-      {
-        type = "client",
-        event = "lj-fuel:client:SendMenuToServer",
-        icon = "fas fa-gas-pump",
-        label = "Refuel Vehicle",
-      },
-        },
-          distance = 1.0
-    },
-
-}
-```
-* Put this in **"Config.TargetModels"**
-```lua
-Config.TargetModels = {
-	
-	["fuel"] = {
-        models = {
-            "prop_gas_pump_1d",
-            "prop_gas_pump_1a",
-            "prop_gas_pump_1b",
-            "prop_gas_pump_1c",
-            "prop_vintage_pump",
-            "prop_gas_pump_old2",
-            "prop_gas_pump_old3"
-        },
-      options = {
-     {
-      type = "client",
-      event = "lj-fuel:client:buyCanMenu",
-      icon = "fas fa-burn",
-      label = "Buy Jerry Can",
-     },
-     {
-      type = "client",
-      event = "lj-fuel:client:refuelCanMenu",
-      icon = "fas fa-gas-pump",
-      label = "Refuel Jerry Can",
-    },
-      },
-    distance = 2.0
-  },
-  
-}
 ```
 
 ## Global Taxes:
@@ -163,7 +103,7 @@ https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-
 #
 
 # My CSS Edits to Dependencies
-* [qb-target](https://github.com/loljoshie/qb-target)
+* [berkie-target](https://github.com/loljoshie/berkie-target)
 * [progressbar](https://github.com/loljoshie/progressbar)
 * [qb-menu](https://github.com/loljoshie/qb-menu)
 
