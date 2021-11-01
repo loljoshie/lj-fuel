@@ -156,7 +156,8 @@ https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-
 ### refuel interact
 ![qb-target interact](https://user-images.githubusercontent.com/91661118/139377384-0ab4a5f7-c760-4111-8512-bf8760e8d61a.png)
 ### menu price calculation
-![qb-target interact](https://user-images.githubusercontent.com/91661118/139377384-0ab4a5f7-c760-4111-8512-bf8760e8d61a.png)
+![qb-target interact](https://user-images.githubusercontent.com/91661118/139625411-38fde643-74ac-4be5-a26d-c1744406afb0.png)
+
 ### pump interaction
 ![qb-target pump interaction](https://user-images.githubusercontent.com/91661118/139377494-de7de1b5-b8e7-4c72-9b63-493ee34279bd.png)
 #
