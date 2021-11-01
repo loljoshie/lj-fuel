@@ -2,7 +2,7 @@ fx_version 'bodacious'
 game 'gta5'
 
 description 'lj-fuel'
-version '1.0'
+version '1.1'
 author 'github.com/loljoshie'
 
 
