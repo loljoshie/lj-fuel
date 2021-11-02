@@ -150,11 +150,6 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 		QBCore.Functions.Notify('Don\'t have jerry can', 'error')
 	end
 		
-	if HasPedGotWeapon(ped, 883325847) and GetAmmoInPedWeapon(ped, 883325847) < 4500 then
-		QBCore.Functions.Notify('Jerry can is empty', 'error')
-		return
-	end
-		
 	-- refuel vehicle with jerry can outside zone
 	if HasPedGotWeapon(ped, 883325847) then
 		RequestAnimDict("weapon@w_sp_jerrycan")
