@@ -2,10 +2,10 @@ local fuelSynced = false
 local inBlacklisted = false
 local inGasStation = false
 
-local prop = { "prop_gas_pump_1d", "prop_gas_pump_1a", "prop_gas_pump_1b", "prop_gas_pump_1c", "prop_vintage_pump", "prop_gas_pump_old2", "prop_gas_pump_old3",
+local prop = { 'prop_gas_pump_1d', 'prop_gas_pump_1a', 'prop_gas_pump_1b', 'prop_gas_pump_1c', 'prop_vintage_pump', 'prop_gas_pump_old2', 'prop_gas_pump_old3',
 }
 
-local bones = { "boot",
+local bones = { 'boot', 'rudder', 'rudder2', 'petrolcap', 'petrolcap', 'petroltank', 'petroltank_l', 'petroltank_r',
 }
 
 exports['berkie-target']:AddTargetBone(bones, {
@@ -148,8 +148,11 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 	------------------------------------------------------
 	if inGasStation == false and not HasPedGotWeapon(ped, 883325847) then
 		QBCore.Functions.Notify('Don\'t have jerry can', 'error')
+	elseif inGasStation == false and GetAmmoInPedWeapon(ped, 883325847) == 0 then
+		QBCore.Functions.Notify('Jerry can is empty', 'error')
+		return
 	end
-		
+
 	-- refuel vehicle with jerry can outside zone
 	if HasPedGotWeapon(ped, 883325847) then
 		RequestAnimDict("weapon@w_sp_jerrycan")
