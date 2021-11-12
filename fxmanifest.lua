@@ -1,12 +1,9 @@
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
 description 'lj-fuel'
-version '1.1'
+version '1.2'
 author 'github.com/loljoshie'
-
-
-shared_script '@qb-core/import.lua'
 
 client_scripts {
 	'config.lua',
@@ -18,6 +15,10 @@ server_scripts {
 	'config.lua',
 	'source/fuel_server.lua'
 }
+
+--[[ shared_script {
+	'@qb-core/import.lua' -- if you are using older version of qbcore you'll have to uncomment shared_scripts
+} ]]
 
 exports {
 	'GetFuel',
