@@ -10,7 +10,7 @@ lj-fuel is a modified version of LegacyFuel using PolyZones like NoPixel 3.0
 Runs at ~ 0.00 to 0.01 ms if you have more optimization suggestions feel free to reach out
 
 # Dependencies
-* [berkie-target](https://github.com/BerkieBb/berkie-target)
+* [qb-target](https://github.com/BerkieBb/qb-target)
 * [qb-menu](https://github.com/qbcore-framework/qb-menu)
 * [polyzone](https://github.com/qbcore-framework/PolyZone)
 * [polyzonehelper](https://github.com/bashenga/polyzonehelper)
