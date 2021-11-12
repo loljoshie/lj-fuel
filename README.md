@@ -20,14 +20,34 @@ Runs at ~ 0.00 to 0.01 ms if you have more optimization suggestions feel free to
 * **IMPORTANT: Must rename ANY existing LegacyFuel exports to lj-fuel**
 * Watch [tutorial video](https://www.youtube.com/watch?v=9bwqIRspgns) [if visual guide needed]
 
-## qb-menu 
-* find this in **"qb-menu/client/main.lua"**
-* Put this **under line 27:**
+## qb-target:
+* Find this in **qb-target/config**
+* Put this in **"Config.TargetBones"** (more reliable to always keep target bones in config) 
 ```lua
-RegisterNetEvent('qb-menu:openMenu')
-AddEventHandler('qb-menu:openMenu', function(data)
-    openMenu(data)
-end)
+Config.TargetBones = {
+
+	["bones"] = {
+        bones = {
+            'boot', 
+            'rudder', 
+            'rudder2', 
+            'petrolcap', 
+            'petroltank', 
+            'petroltank_l', 
+            'petroltank_r',
+        },
+        options = {
+      {
+        type = "client",
+        event = "lj-fuel:client:SendMenuToServer",
+        icon = "fas fa-gas-pump",
+        label = "Refuel Vehicle",
+      },
+        },
+          distance = 1.0
+    },
+
+}
 ```
 
 ## Global Taxes:
@@ -108,6 +128,12 @@ https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-
 * [qb-menu](https://github.com/loljoshie/qb-menu)
 
 # Change Logs
+
+### 1.2
+* Added option to switch between newer or older versions of QBCore
+* Change exports back to qb-target
+* Fixed qb-menu for new update
+* Commented out import.lua (still need for older versions)
 
 ### 1.1
 * Added option to have a chance of engine explosion while vehicle is left running
