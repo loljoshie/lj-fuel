@@ -123,7 +123,7 @@ https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-
 #
 
 # My CSS Edits to Dependencies
-* [berkie-target](https://github.com/loljoshie/berkie-target)
+* [qb-target](https://github.com/loljoshie/qb-target)
 * [progressbar](https://github.com/loljoshie/progressbar)
 * [qb-menu](https://github.com/loljoshie/qb-menu)
 
