@@ -1,5 +1,5 @@
 Config = {}
-
+Config.Version = "new" -- "new" or "old" set to old if using older versions of qbcore
 Config.ShowNearestGasStationOnly = true -- show nearest gas stations when close enough
 Config.ShowAllGasStations = false -- show all gas stations around map
 Config.LeaveEngineRunning = true -- when set to true vehicle engine will run upon exiting vehicle
@@ -12,13 +12,11 @@ Config.refuelCost = 600 -- refueling jerry can price
 
 Config.FuelDecor = "_FUEL_LEVEL" -- don't touch
 
-
 -- Blacklist certain vehicles. Use names or hashes. https://wiki.gtanet.work/index.php?title=Vehicle_Models
 Config.Blacklist = {
 	--"Adder",
 	--276773164
 }
-
 
 -- Class multipliers. If you want SUVs to use less fuel, you can change it to anything under 1.0, and vise versa.
 Config.Classes = {
