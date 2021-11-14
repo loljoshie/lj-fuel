@@ -15,10 +15,11 @@ Runs at ~ 0.00 to 0.01 ms if you have more optimization suggestions feel free to
 * [polyzone](https://github.com/qbcore-framework/PolyZone)
 * [polyzonehelper](https://github.com/bashenga/polyzonehelper)
 
-# Installation [tutorial video](https://www.youtube.com/watch?v=9bwqIRspgns)
+# Video Guide Installation
+* [**[QBCore] lj-fuel - Video Installation Guide**](https://youtu.be/9bwqIRspgns)
 
+# Installation
 * **IMPORTANT: Must rename ANY existing LegacyFuel exports to lj-fuel**
-* Watch [tutorial video](https://www.youtube.com/watch?v=9bwqIRspgns) [if visual guide needed]
 
 ## qb-target:
 * Find this in **qb-target/config**
