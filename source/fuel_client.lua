@@ -1,24 +1,11 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
 local fuelSynced = false
 local inBlacklisted = false
 local inGasStation = false
 
 local props = { 'prop_gas_pump_1d', 'prop_gas_pump_1a', 'prop_gas_pump_1b', 'prop_gas_pump_1c', 'prop_vintage_pump', 'prop_gas_pump_old2', 'prop_gas_pump_old3',
 }
-
--- default new version of qbcore
-if Config.Version == "new" then
-    QBCore = exports['qb-core']:GetCoreObject()
-    print('[lj-fuel] STARTED NEWER VERSION.\nREMEMBER: IF YOU HAVE AN OLDER VERSION OF QBCORE CHANGE FROM "NEW" TO "OLD" IN CONFIG.LUA')
-elseif Config.Version == "old" then
-    local QBCore = nil
-    Citizen.CreateThread(function()
-        while QBCore == nil do
-            TriggerEvent("QBCore:GetObject", function(obj)QBCore = obj end)
-            print('[lj-fuel] STARTED OLDER VERSION.\nREMEMBER: IF YOU HAVE AN NEWER VERSION OF QBCORE CHANGE FROM "OLD" TO "NEW" IN CONFIG.LUA AND UNCOMMENT SHARED_SCRIPTS IN FXMANIFEST')
-            Citizen.Wait(200)
-        end
-    end)
-end
 
 exports['qb-target']:AddTargetModel(props, {
 	options = {
@@ -358,10 +345,8 @@ end)
 -- show all gas stations around map
 elseif Config.ShowAllGasStations then
     Citizen.CreateThread(function()
-
         for _, gasStationCoords in pairs(Config.GasStationsBlips) do
             CreateBlip(gasStationCoords)
-
         end
     end)
 end
