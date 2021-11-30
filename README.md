@@ -131,10 +131,8 @@ https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-
 # Change Logs
 
 ### 1.2
-* Added option to switch between newer or older versions of QBCore
 * Change exports back to qb-target
 * Fixed qb-menu for new update
-* Commented out import.lua (still need for older versions)
 
 ### 1.1
 * Added option to have a chance of engine explosion while vehicle is left running
