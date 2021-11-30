@@ -1,16 +1,4 @@
--- default new version of qbcore
-if Config.Version == "new" then
-    QBCore = exports['qb-core']:GetCoreObject()
-
-elseif Config.Version == "old" then
-    local QBCore = nil
-    Citizen.CreateThread(function()
-        while QBCore == nil do
-            TriggerEvent("QBCore:GetObject", function(obj)QBCore = obj end)
-            Citizen.Wait(200)
-        end
-    end)
-end
+local QBCore = exports['qb-core']:GetCoreObject()
 
 -- refuel vehicle menu
 RegisterServerEvent('lj-fuel:server:OpenMenu', function(amount, inGasStation)
