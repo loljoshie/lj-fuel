@@ -16,10 +16,6 @@ server_scripts {
 	'source/fuel_server.lua'
 }
 
---[[ shared_script {
-	'@qb-core/import.lua' -- if you are using older version of qbcore you'll have to uncomment shared_scripts
-} ]]
-
 exports {
 	'GetFuel',
 	'SetFuel'
