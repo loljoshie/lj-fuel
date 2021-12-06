@@ -236,7 +236,7 @@ Citizen.CreateThread(function()
 			name="GasStation"..k,
 			minZ = 	Config.GasStations[k].minz,
 			maxZ = Config.GasStations[k].maxz,
-			debugPoly = true
+			debugPoly = false
 		})
 		Stations[k]:onPlayerInOut(function(isPointInside)
 			if isPointInside then
