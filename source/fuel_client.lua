@@ -229,28 +229,22 @@ Citizen.CreateThread(function()
 end)
 end
 
-RegisterNetEvent('polyzonehelper:enter')
-AddEventHandler('polyzonehelper:enter', function(name)
-	if name == "GasStations" then
-		inGasStation = true
-	end
-end)
-
-RegisterNetEvent('polyzonehelper:exit')
-AddEventHandler('polyzonehelper:exit', function(name)
-	if name == "GasStations" then
-		inGasStation = false
-	end
-end)
-
-
+local Stations = {}
 Citizen.CreateThread(function() 
-    for k, v in pairs(Config.GasStations) do 
-        exports["polyzonehelper"]:AddBoxZone('GasStations', vector3(Config.GasStations[k].polyzone.x, Config.GasStations[k].polyzone.y, Config.GasStations[k].polyzone.z), Config.GasStations[k].polyzone1, Config.GasStations[k].polyzone2, {
-            name='GasStations', 
-            heading = Config.GasStations[k].polyzoneHeading,
-            debugPoly=false
-        })
+    for k=1, #Config.GasStations do
+		Stations[k] = PolyZone:Create(Config.GasStations[k].zones, {
+			name="GasStation"..k,
+			minZ = 	Config.GasStations[k].minz,
+			maxZ = Config.GasStations[k].maxz,
+			debugPoly = false
+		})
+		Stations[k]:onPlayerInOut(function(isPointInside)
+			if isPointInside then
+				inGasStation = true
+			else
+				inGasStation = false
+			end
+		end)
     end
 end)
 
