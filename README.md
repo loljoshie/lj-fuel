@@ -29,13 +29,7 @@ Config.TargetBones = {
 
 	["bones"] = {
         bones = {
-            'boot', 
-            'rudder', 
-            'rudder2', 
-            'petrolcap', 
-            'petroltank', 
-            'petroltank_l', 
-            'petroltank_r',
+            'wheel_lr',
         },
         options = {
       {
