@@ -347,6 +347,7 @@ end)
 CreateThread(function()
 	local bones = {
 		'wheel_lr',
+		'wheel_rr'
 	}
 	exports['qb-target']:AddTargetBone(bones, {
 		options = {
@@ -357,6 +358,6 @@ CreateThread(function()
 			label = "Refuel Vehicle",
 		}
 	},
-		distance = 1.0,
+		distance = 1.5,
 	})
 end)
