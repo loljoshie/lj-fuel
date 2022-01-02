@@ -356,9 +356,6 @@ CreateThread(function()
 			event = "lj-fuel:client:SendMenuToServer",
 			icon = "fas fa-gas-pump",
 			label = "Refuel Vehicle",
-			canInteract = function(entity)
-				return GetSelectedPedWeapon(PlayerPedId()) == 883325847 -- WEAPON_PetrolCan on hand
-			end,
 		}
 	},
 		distance = 1.5,
