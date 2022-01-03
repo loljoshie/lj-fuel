@@ -4,11 +4,12 @@ Config.ShowNearestGasStationOnly = true -- show nearest gas stations when close 
 Config.ShowAllGasStations = false -- show all gas stations around map
 Config.LeaveEngineRunning = true -- when set to true vehicle engine will run upon exiting vehicle
 Config.VehicleBlowUp = true -- when set to true vehicle has a chance to blow up if engine is left running
-Config.BlowUpChance = 40 -- percentage for chance of engine explosion
+Config.BlowUpChance = 5 -- percentage for chance of engine explosion
 Config.RefillCost = 100 -- default price
 Config.CostMultiplier = 3.0 -- tax basically
 Config.canCost = 400 -- buy jerry can price
 Config.refuelCost = 600 -- refueling jerry can price
+Config.GlobalTax = 15.0
 
 Config.FuelDecor = "_FUEL_LEVEL" -- don't touch
 
