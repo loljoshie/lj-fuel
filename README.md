@@ -17,29 +17,6 @@ Runs at ~ 0.00 to 0.01 ms if you have more optimization suggestions feel free to
 # Installation
 * **IMPORTANT: Must rename ANY existing LegacyFuel exports to lj-fuel**
 
-## qb-target:
-* Find this in **qb-target/config**
-* Put this in **"Config.TargetBones"** (more reliable to always keep target bones in config) 
-```lua
-Config.TargetBones = {
-
-	["bones"] = {
-        bones = {
-            'wheel_lr',
-        },
-        options = {
-      {
-        type = "client",
-        event = "lj-fuel:client:SendMenuToServer",
-        icon = "fas fa-gas-pump",
-        label = "Refuel Vehicle",
-      },
-        },
-          distance = 1.0
-    },
-
-}
-```
 ## qb-smallresources:
 * Remove this thread in **qb-smallresources/client/ignore.lua**
 ```lua
