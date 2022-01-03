@@ -40,21 +40,6 @@ Config.TargetBones = {
 
 }
 ```
-
-## Global Taxes:
-* Put this in **qb-core/server/functions.lua**
-```lua
-QBCore.Functions.GlobalTax = function(value)
-	local tax = (value / 100 * QBConfig.Server.GlobalTax)
-	return tax
-end
-```
-* Find this in **qb-core/config.lua**
-* Put this **under line 29:**
-```lua
-QBConfig.Server.GlobalTax = 15.0
-```
-
 ## qb-smallresources:
 * Remove this thread in **qb-smallresources/client/ignore.lua**
 ```lua
@@ -121,6 +106,7 @@ https://user-images.githubusercontent.com/91661118/139377251-82a357e4-8ebc-43e4-
 # Change Logs
 
 ### 1.2
+* optimize & refactor & change table & add new export - evanillaa
 * Change exports back to qb-target
 * Fixed qb-menu for new update
 
