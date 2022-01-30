@@ -203,27 +203,26 @@ RegisterNetEvent('lj-fuel:client:refuelCan', function()
 	local ped = PlayerPedId()
 	local CurFuel = GetVehicleFuelLevel(vehicle)
 	if HasPedGotWeapon(ped, 883325847) then
-		if GetAmmoInPedWeapon(ped, 883325847) < 4500 then
-			RequestAnimDict("weapon@w_sp_jerrycan")
-			while not HasAnimDictLoaded('weapon@w_sp_jerrycan') do Wait(100) end
-				TaskPlayAnim(ped, "weapon@w_sp_jerrycan", "fire", 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
-				QBCore.Functions.Progressbar("refuel-car", "Refueling", 10000, false, true, {
-				disableMovement = true,
-				disableCarMovement = true,
-				disableMouse = false,
-				disableCombat = true,
-				}, {}, {}, {}, function() -- Done
-				TriggerServerEvent('lj-fuel:server:PayForFuel', Config.refuelCost, GetPlayerServerId(PlayerId()))
-				SetPedAmmo(ped, 883325847, 4500)
-				PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
-				StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
-			end, function() -- Cancel
-				QBCore.Functions.Notify(Lang:t("notify.refuel_cancel"), "error")
-				StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
-				end)
-			else 
-				QBCore.Functions.Notify(Lang:t("notify.jerrycan_full"), "error")
-			end
+	if GetAmmoInPedWeapon(ped, 883325847) < 4500 then
+		RequestAnimDict("weapon@w_sp_jerrycan")
+		while not HasAnimDictLoaded('weapon@w_sp_jerrycan') do Wait(100) end
+			TaskPlayAnim(ped, "weapon@w_sp_jerrycan", "fire", 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
+			QBCore.Functions.Progressbar("refuel-car", "Refueling", 10000, false, true, {
+			disableMovement = true,
+			disableCarMovement = true,
+			disableMouse = false,
+			disableCombat = true,
+			}, {}, {}, {}, function() -- Done
+			TriggerServerEvent('lj-fuel:server:PayForFuel', Config.refuelCost, GetPlayerServerId(PlayerId()))
+			SetPedAmmo(ped, 883325847, 4500)
+			PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
+			StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
+		end, function() -- Cancel
+			QBCore.Functions.Notify(Lang:t("notify.refuel_cancel"), "error")
+			StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
+			end)
+		else 
+			QBCore.Functions.Notify(Lang:t("notify.jerrycan_full"), "error")
 		end
 	end
 end)
