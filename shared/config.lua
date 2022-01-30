@@ -1,7 +1,6 @@
 Config = {}
-Config.Version = "new" -- "new" or "old" set to old if using older versions of qbcore
 Config.ShowNearestGasStationOnly = true -- show nearest gas stations when close enough
-Config.ShowAllGasStations = false -- show all gas stations around map
+Config.ShowAllGasStations = true -- show all gas stations around map
 Config.LeaveEngineRunning = true -- when set to true vehicle engine will run upon exiting vehicle
 Config.VehicleBlowUp = true -- when set to true vehicle has a chance to blow up if engine is left running
 Config.BlowUpChance = 5 -- percentage for chance of engine explosion
