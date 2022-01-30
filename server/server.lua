@@ -34,7 +34,7 @@ RegisterNetEvent("lj-fuel:server:OpenMenu", function (amount, inGasStation)
 			TriggerClientEvent('qb-menu:client:openMenu', src, {
 				{
 					header = 'Gas Station',
-					txt = 'The total cost is going to be: $'..total..' including taxes.' ,
+					txt = 'Refuel from jerry can.' ,
 					params = {
 					event = "lj-fuel:client:RefuelVehicle",
 					args = total,
