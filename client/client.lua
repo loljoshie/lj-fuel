@@ -178,6 +178,9 @@ RegisterNetEvent('lj-fuel:client:buyCan', function()
 		if QBCore.Functions.GetPlayerData().money['cash'] >= Config.canCost then
 			TriggerServerEvent('QBCore:Server:AddItem', "weapon_petrolcan", 1)
 			SetPedAmmo(ped, 883325847, 4500)
+			QBCore.Functions.TriggerCallback('lj-fuel:server:fuelCan', function(itemData)
+				TriggerServerEvent("weapons:server:AddWeaponAmmo", itemData, 4500)
+			end)
 			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["weapon_petrolcan"], "add")
         	TriggerServerEvent('lj-fuel:server:PayForFuel', Config.canCost, GetPlayerServerId(PlayerId()))
 		else
@@ -215,6 +218,9 @@ RegisterNetEvent('lj-fuel:client:refuelCan', function()
 			}, {}, {}, {}, function() -- Done
 			TriggerServerEvent('lj-fuel:server:PayForFuel', Config.refuelCost, GetPlayerServerId(PlayerId()))
 			SetPedAmmo(ped, 883325847, 4500)
+			QBCore.Functions.TriggerCallback('lj-fuel:server:fuelCan', function(itemData)
+				TriggerServerEvent("weapons:server:AddWeaponAmmo", itemData, 4500)
+			end)
 			PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
 			StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 		end, function() -- Cancel
@@ -282,6 +288,9 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 				}, {}, {}, {}, function() -- Done
 				SetFuel(vehicle, 100)
 				SetPedAmmo(ped, 883325847, 0)
+				QBCore.Functions.TriggerCallback('lj-fuel:server:fuelCan', function(itemData)
+					TriggerServerEvent("weapons:server:AddWeaponAmmo", itemData, 0)
+				end)
 				PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
 				StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 			end, function() -- Cancel
