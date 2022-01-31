@@ -44,6 +44,13 @@ RegisterNetEvent("lj-fuel:server:OpenMenu", function (amount, inGasStation)
 	end
 end)
 
+QBCore.Functions.CreateCallback('lj-fuel:server:fuelCan', function(source, cb)
+	local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+	local itemData = Player.Functions.GetItemByName("weapon_petrolcan")
+    cb(itemData)
+end)
+
 RegisterNetEvent("lj-fuel:server:PayForFuel", function (amount)
 	local src = source
 	if not src then return end
