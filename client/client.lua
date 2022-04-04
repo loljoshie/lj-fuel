@@ -178,6 +178,9 @@ RegisterNetEvent('lj-fuel:client:buyCan', function()
 		if QBCore.Functions.GetPlayerData().money['cash'] >= Config.canCost then
 			TriggerServerEvent('QBCore:Server:AddItem', "weapon_petrolcan", 1)
 			SetPedAmmo(ped, 883325847, 4500)
+			QBCore.Functions.TriggerCallback('lj-fuel:server:fuelCan', function(itemData)
+				TriggerServerEvent("weapons:server:AddWeaponAmmo", itemData, 100)
+			end)
 			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["weapon_petrolcan"], "add")
         	TriggerServerEvent('lj-fuel:server:PayForFuel', Config.canCost, GetPlayerServerId(PlayerId()))
 		else
@@ -215,6 +218,9 @@ RegisterNetEvent('lj-fuel:client:refuelCan', function()
 			}, {}, {}, {}, function() -- Done
 			TriggerServerEvent('lj-fuel:server:PayForFuel', Config.refuelCost, GetPlayerServerId(PlayerId()))
 			SetPedAmmo(ped, 883325847, 4500)
+			QBCore.Functions.TriggerCallback('lj-fuel:server:fuelCan', function(itemData)
+				TriggerServerEvent("weapons:server:AddWeaponAmmo", itemData, 100)
+			end)
 			PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
 			StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 		end, function() -- Cancel
@@ -231,10 +237,23 @@ RegisterNetEvent('lj-fuel:client:SendMenuToServer', function()
 	local vehicle = QBCore.Functions.GetClosestVehicle()
 	local CurFuel = GetVehicleFuelLevel(vehicle)
 	local refillCost = Round(Config.RefillCost - CurFuel) * Config.CostMultiplier
-	if CurFuel < 95 then
-		TriggerServerEvent('lj-fuel:server:OpenMenu', refillCost, inGasStation)
+	local ped = PlayerPedId()
+	if HasPedGotWeapon(ped, 883325847) then
+		if GetAmmoInPedWeapon(ped, 883325847) ~= 0 then
+			if CurFuel < 95 then
+				TriggerServerEvent('lj-fuel:server:OpenMenu', 0, inGasStation)
+			else
+				QBCore.Functions.Notify(Lang:t("notify.vehicle_full"), "error")
+			end
+		else
+			QBCore.Functions.Notify(Lang:t("notify.jerrycan_empty"), "error")
+		end
 	else
-		QBCore.Functions.Notify(Lang:t("notify.vehicle_full"), "error")
+		if CurFuel < 95 then
+			TriggerServerEvent('lj-fuel:server:OpenMenu', refillCost, inGasStation)
+		else
+			QBCore.Functions.Notify(Lang:t("notify.vehicle_full"), "error")
+		end
 	end
 end)
 
@@ -269,6 +288,9 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 				}, {}, {}, {}, function() -- Done
 				SetFuel(vehicle, 100)
 				SetPedAmmo(ped, 883325847, 0)
+				QBCore.Functions.TriggerCallback('lj-fuel:server:fuelCan', function(itemData)
+					TriggerServerEvent("weapons:server:AddWeaponAmmo", itemData, 0)
+				end)
 				PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
 				StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 			end, function() -- Cancel

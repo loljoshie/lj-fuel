@@ -45,6 +45,14 @@ Citizen.CreateThread(function()
 end)
 ```
 (removes infinite jerry can and fire extinguisher ammo)
+## inventory
+* Remove the following from your client side inventory lua file.
+```lua
+    if weaponName == "weapon_petrolcan" or weaponName == "weapon_fireextinguisher" then
+        ammo = 4000
+    end
+```
+(removes jerry can and fire extinguisher refull when pulled from inventory)
 
 # Key Features
 * NoPixel style animation for refueling

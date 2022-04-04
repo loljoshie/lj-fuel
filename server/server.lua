@@ -34,7 +34,7 @@ RegisterNetEvent("lj-fuel:server:OpenMenu", function (amount, inGasStation)
 			TriggerClientEvent('qb-menu:client:openMenu', src, {
 				{
 					header = 'Gas Station',
-					txt = 'The total cost is going to be: $'..total..' including taxes.' ,
+					txt = 'Refuel from jerry can.' ,
 					params = {
 					event = "lj-fuel:client:RefuelVehicle",
 					args = total,
@@ -42,6 +42,13 @@ RegisterNetEvent("lj-fuel:server:OpenMenu", function (amount, inGasStation)
 			},
 		})
 	end
+end)
+
+QBCore.Functions.CreateCallback('lj-fuel:server:fuelCan', function(source, cb)
+	local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+	local itemData = Player.Functions.GetItemByName("weapon_petrolcan")
+    cb(itemData)
 end)
 
 RegisterNetEvent("lj-fuel:server:PayForFuel", function (amount)
