@@ -289,7 +289,20 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 				SetFuel(vehicle, 100)
 				SetPedAmmo(ped, 883325847, 0)
 				QBCore.Functions.TriggerCallback('lj-fuel:server:fuelCan', function(itemData)
-					TriggerServerEvent("weapons:server:AddWeaponAmmo", itemData, 0)
+					requiredFuel = math.floor(100 - CurFuel)
+					jerryCanFuel = math.floor(GetAmmoInPedWeapon(ped, 883325847) / 45)
+					if jerryCanFuel >= requiredFuel then
+						fuelAdd = math.floor(CurFuel + requiredFuel)
+						fuelRemove = math.floor((jerryCanFuel - requiredFuel) * 45)
+						jerryAmmo = math.floor(jerryCanFuel - requiredFuel)
+					else 
+						fuelAdd = math.floor(CurFuel + jerryCanFuel)
+						fuelRemove = 0
+						jerryAmmo = 0
+					end
+					SetFuel(vehicle, fuelAdd)
+					TriggerServerEvent("weapons:server:AddWeaponAmmo", itemData, jerryAmmo)
+					SetPedAmmo(ped, 883325847, fuelRemove)
 				end)
 				PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
 				StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
