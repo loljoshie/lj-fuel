@@ -286,8 +286,6 @@ RegisterNetEvent('lj-fuel:client:RefuelVehicle', function(refillCost)
 				disableMouse = false,
 				disableCombat = true,
 				}, {}, {}, {}, function() -- Done
-				SetFuel(vehicle, 100)
-				SetPedAmmo(ped, 883325847, 0)
 				QBCore.Functions.TriggerCallback('lj-fuel:server:fuelCan', function(itemData)
 					requiredFuel = math.floor(100 - CurFuel)
 					jerryCanFuel = math.floor(GetAmmoInPedWeapon(ped, 883325847) / 45)
